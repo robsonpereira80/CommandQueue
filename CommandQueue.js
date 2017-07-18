@@ -82,8 +82,8 @@ require([
         }
 
         var travelTime = $armyService.calculateTravelTime(army, {
-            barbarian: false,
-            ownTribe: false,
+            barbarian: true,
+            ownTribe: true,
             officers: officers,
             effects: false
         })
