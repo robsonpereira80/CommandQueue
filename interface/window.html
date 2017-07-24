@@ -1,0 +1,307 @@
+<div class="win-content message-list-wrapper searchable-list ng-scope">
+    <header class="win-head">
+        <h2><#= locale("queue", "title") #> <span class="small">v<#= version #></span></h2>
+        <ul class="list-btn">
+            <li><a href="#" class="twOverflow-close size-34x34 btn-red icon-26x26-close"></a></li>
+        </ul>
+    </header>
+
+    <div class="win-main">
+        <!-- ABAS -->
+        <div class="tabs tabs-bg">
+            <div class="tabs-four-col">
+                <div class="tab" tab="info">
+                    <div class="tab-inner">
+                        <div><a href="#" class="btn-icon btn-orange"><#= locale("queue", "general.info") #></a></div>
+                    </div>
+                </div>
+                <div class="tab" tab="add">
+                    <div class="tab-inner">
+                        <div><a href="#" class="btn-icon btn-orange"><#= locale("queue", "general.add") #></a></div>
+                    </div>
+                </div>
+                <div class="tab" tab="queue">
+                    <div class="tab-inner">
+                        <div><a href="#" class="btn-icon btn-orange"><#= locale("queue", "general.waiting") #></a></div>
+                    </div>
+                </div>
+                <div class="tab" tab="log">
+                    <div class="tab-inner">
+                        <div><a href="#" class="btn-icon btn-orange"><#= locale("queue", "general.registers") #></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- INFO -->
+        <div class="box-paper footer has-footer-upper twOverflow-content-info">
+            <h5 class="twx-section collapse"><#= locale("queue", "info.dev1") #></h5>
+            <div>
+                <p><#= locale("queue", "info.dev2") #></p>
+            </div>
+
+            <h5 class="twx-section collapse"><#= locale("queue", "info.active1") #></h5>
+            <div>
+                <p><#= locale("queue", "info.active2") #></p>
+                <p><#= locale("queue", "info.active3") #></p>
+            </div>
+
+            <h5 class="twx-section collapse"><#= locale("queue", "info.dynamic1") #></h5>
+            <div>
+                <p><#= locale("queue", "info.dynamic2") #></p>
+                <p><#= locale("queue", "info.dynamic3") #></p>
+            </div>
+
+            <h5 class="twx-section collapse"><#= locale("queue", "info.date1") #></h5>
+            <div>
+                <p><#= locale("queue", "info.date2") #></p>
+            </div>
+        </div>
+
+        <!-- ADD COMANDO -->
+        <div class="box-paper footer has-footer-upper rich-text twOverflow-content-add">
+            <form class="addForm">
+                <h5 class="twx-section collapse"><#= locale("queue", "add.basics") #></h5>
+                <div>
+                    <table class="tbl-border-light tbl-striped">
+                        <colgroup>
+                            <col width="25%">
+                            <col>
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span class="ff-cell-fix"><#= locale("queue", "add.origin") #></span>
+                                </td>
+                                <td>
+                                    <input data-setting="origin" type="text" class="textfield-border origin" pattern="\\d{2,3}\\|\\d{2,3}" placeholder="000|000" required>
+                                    <a class="img-link btn btn-orange padded addSelected">&laquo; <#= locale("queue", "add.addSelected") #></a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <span class="ff-cell-fix"><#= locale("queue", "add.target") #></span>
+                                </td>
+                                <td>
+                                    <input data-setting="target" type="text" class="textfield-border target" pattern="\\d{2,3}\\|\\d{2,3}" placeholder="000|000" required>
+                                    <a class="img-link btn btn-orange padded addMapSelected">&laquo; <#= locale("queue", "add.addMapSelected") #></a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <span class="ff-cell-fix">
+                                        <select data-setting="dateType" class="dateType">
+                                            <option value="arrive" selected><#= locale("queue", "add.arrive") #></option>
+                                            <option value="out"><#= locale("queue", "add.out") #></option>
+                                        </select>
+                                    </span>
+                                </td>
+                                <td>
+                                    <input data-setting="date" type="text" class="textfield-border date" pattern="\\s*\\d{1,2}:\\d{1,2}:\\d{1,2}(:\\d{1,3})? \\d{1,2}\\/\\d{1,2}\\/\\d{4}\\s*" placeholder="00:00:00:000 00/00/0000" required>
+                                    <a class="img-link btn btn-orange padded addCurrentDate">&laquo; <#= locale("queue", "add.currentDate") #></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="tbl-border-light tbl-units tbl-speed travelTimes" style="display:none">
+                        <thead>
+                            <tr>
+                                <th colspan="7"><#= locale("queue", "add.travelTimes") #></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="odd">
+                                    <div class="unit-wrap">
+                                        <span class="icon icon-34x34-unit-knight"></span>
+                                        <span class="icon icon-34x34-unit-light_cavalry"></span>
+                                        <span class="icon icon-34x34-unit-mounted_archer"></span>
+                                    </div>
+                                    <div class="travelTime box-time-sub-icon">
+                                        <div class="time-icon icon-20x20-attack"></div>
+                                        <span class="attack" unit="knight"></span>
+                                    </div>
+                                    <div class="travelTime box-time-sub-icon">
+                                        <div class="time-icon icon-20x20-support"></div>
+                                        <span class="support" unit="knight"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="unit-wrap">
+                                        <span class="icon icon-single icon-34x34-unit-heavy_cavalry"></span>
+                                    </div>
+                                    <div class="travelTime"><span class="attack" unit="heavy_cavalry"></span></div>
+                                    <div class="travelTime"><span class="support" unit="heavy_cavalry"></span></div>
+                                </td>
+                                <td class="odd">
+                                    <div class="unit-wrap">
+                                        <span class="icon icon-34x34-unit-archer"></span>
+                                        <span class="icon icon-34x34-unit-spear"></span>
+                                        <span class="icon icon-34x34-unit-axe"></span>
+                                        <span class="icon icon-34x34-unit-doppelsoldner"></span>
+                                    </div>
+                                    <div class="travelTime"><span class="attack" unit="axe"></span></div>
+                                    <div class="travelTime"><span class="support" unit="axe"></span></div>
+                                </td>
+                                <td>
+                                    <div class="unit-wrap">
+                                        <span class="icon icon-single icon-34x34-unit-sword"></span>
+                                    </div>
+                                    <div class="travelTime"><span class="attack" unit="sword"></span></div>
+                                    <div class="travelTime"><span class="support" unit="sword"></span></div>
+                                </td>
+                                <td class="odd">
+                                    <div class="unit-wrap">
+                                        <span class="icon icon-34x34-unit-catapult"></span>
+                                        <span class="icon icon-34x34-unit-ram"></span>
+                                    </div>
+                                    <div class="travelTime"><span class="attack" unit="ram"></span></div>
+                                    <div class="travelTime"><span class="support" unit="ram"></span></div>
+                                </td>
+                                <td>
+                                    <div class="unit-wrap">
+                                        <span class="icon icon-single icon-34x34-unit-snob"></span>
+                                    </div>
+                                    <div class="travelTime"><span class="attack" unit="snob"></span></div>
+                                    <div class="travelTime"><span class="support" unit="snob"></span></div>
+                                </td>
+                                <td class="odd">
+                                    <div class="unit-wrap">
+                                        <span class="icon icon-single icon-34x34-unit-trebuchet"></span>
+                                    </div>
+                                    <div class="travelTime"><span class="attack" unit="trebuchet"></span></div>
+                                    <div class="travelTime"><span class="support" unit="trebuchet"></span></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h5 class="twx-section collapse"><#= locale("queue", "general.units") #></h5>
+                <table class="tbl-border-light tbl-striped">
+                    <colgroup>
+                        <col width="50%">
+                        <col>
+                    </colgroup>
+                    <tbody class="preset-edit">
+                        <tr>
+                            <# units.forEach(function(unit, i) { #>
+                                <# if (i !== 0 && i % 2 === 0) { #>
+                                    </tr><tr>
+                                <# } #>
+
+                                <td class="cell-space-left">
+                                    <span class="float-left icon-bg-black icon-44x44-unit-<#= unit #>"></span>
+                                    <div class="ff-cell-fix cell-space-44x44">
+                                        <span><#= locale("queue", "units." + unit) #></span>
+                                        <input class="unit <#= unit #>" type="text" data-setting="<#= unit #>" placeholder="0">
+                                    </div>
+                                </td>
+                            <# }) #>
+
+                            <td class="text-center catapult-target" style="display:none">
+                                <select data-setting="catapultTarget">
+                                    <# buildings.forEach(function(building, i) { #>
+                                        <# if (building === "headquarter") { #>
+                                            <option value="headquarter" selected><#= locale("queue", "buildings.headquarter") #></option>
+                                        <# } else { #>
+                                            <option value="<#= building #>"><#= locale("queue", "buildings." + building) #></option>
+                                        <# } #>
+                                    <# }) #>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h5 class="twx-section collapse"><#= locale("queue", "general.officers") #></h5>
+                <table class="tbl-border-light tbl-striped officers">
+                    <tbody>
+                        <tr>
+                            <# for (var i = 0; i < officers.length; i++) { #>
+                                <td>
+                                    <span class="icon-44x44-premium_officer_<#= officers[i] #>"></span>
+                                    <label class="size-34x34 btn-orange icon-26x26-checkbox">
+                                        <input type="checkbox" data-setting="<#= officers[i] #>">
+                                    </label>
+                                </td>
+                            <# } #>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+
+        <!-- LISTA DE COMANDOS -->
+        <div class="box-paper footer has-footer-upper rich-text twOverflow-content-queue">
+            <h5 class="twx-section collapse"><#= locale("queue", "queue.filters") #></h5>
+            <div class="filters">
+                <table class="tbl-border-light">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div data-filter="selectedVillage" class="box-border-dark icon selectedVillage" tooltip="<#= locale("queue", "filters.selectedVillage") #>">
+                                    <span class="icon-34x34-village-info icon-bg-black"></span>
+                                </div>
+                                <div data-filter="barbarianTarget" class="box-border-dark icon barbarianTarget" tooltip="<#= locale("queue", "filters.barbarianTarget") #>">
+                                    <span class="icon-34x34-barbarian-village icon-bg-black"></span>
+                                </div>
+                                <div data-filter="attack" class="box-border-dark icon allowedTypes active" tooltip="<#= locale("queue", "filters.attack") #>">
+                                    <span class="icon-34x34-attack icon-bg-black"></span>
+                                </div>
+                                <div data-filter="support" class="box-border-dark icon allowedTypes active" tooltip="<#= locale("queue", "filters.support") #>">
+                                    <span class="icon-34x34-support icon-bg-black"></span>
+                                </div>
+                                <div data-filter="relocate" class="box-border-dark icon allowedTypes active" tooltip="<#= locale("queue", "filters.relocate") #>">
+                                    <span class="icon-34x34-relocate icon-bg-black"></span>
+                                </div>
+                                <div class="text">
+                                    <input data-filter="textMatch" type="text" class="box-border-dark textMatch" placeholder="<#= locale("queue", "filters.textMatch") #>">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h5 class="twx-section collapse"><#= locale("queue", "queue.waiting") #></h5>
+            <div class="queue">
+                <p class="center nothing"><#= locale("queue", "queue.noneAdded") #></p>
+            </div>
+        </div>
+
+        <!-- EVENTOS -->
+        <div class="box-paper footer has-footer-upper rich-text twOverflow-content-log">
+            <h5 class="twx-section collapse"><#= locale("queue", "queue.sended") #></h5>
+            <div class="sended">
+                <p class="center nothing"><#= locale("queue", "queue.noneSended") #></p>
+            </div>
+
+            <h5 class="twx-section collapse"><#= locale("queue", "queue.expired") #></h5>
+            <div class="expired">
+                <p class="center nothing"><#= locale("queue", "queue.noneExpired") #></p>
+            </div>
+        </div>
+    </div>
+    <footer class="win-foot">
+        <ul class="list-btn list-center buttons">
+            <li class="twOverflow-button-log">
+                <a class="btn-orange btn-border clear"><#= locale("queue", "general.clear") #></a>
+            </li>
+            <li class="twOverflow-button-add">
+                <a class="btn-orange btn-border add" name="attack"><span class="icon-26x26-attack-small"></span> <#= locale("queue", "general.attack") #></a>
+            </li>
+            <li class="twOverflow-button-add">
+                <a class="btn-orange btn-border add" name="support"><span class="icon-26x26-support"></span> <#= locale("queue", "general.support") #></a>
+            </li>
+            <li class="twOverflow-button-add">
+                <a class="btn-orange btn-border add" name="relocate"><span class="icon-26x26-relocate"></span> <#= locale("queue", "general.relocate") #></a>
+            </li>
+            <li>
+                <a class="btn-green btn-border switch"><#= locale("queue", "general.activate") #></a>
+            </li>
+        </ul>
+    </footer>
+</div>

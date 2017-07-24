@@ -1,0 +1,56 @@
+<table class="tbl-border-light">
+    <colgroup>
+        <col width="100px">
+    </colgroup>
+    <tbody>
+        <tr>
+            <th colspan="2">
+                <span class="icon-bg-red icon-26x26-<#= type #>" tooltip="<#= locale("queue", "general." + type) #>"></span>
+
+                <# if (section === "queue") { #>
+                    <span class="size-26x26 icon-bg-black icon-26x26-time-duration" tooltip="<#= locale("queue", "command.timeLeft") #>"></span>
+                    <span class="time-left">00:00:00</span>
+                <# } #>
+
+                <span class="size-26x26 icon-bg-black icon-20x20-units-outgoing" tooltip="<#= locale("queue", "command.out") #>"></span>
+                <span class="sent-time"><#= sendTime #></span>
+                <span class="size-26x26 icon-bg-black icon-20x20-time-arrival" tooltip="<#= locale("queue", "command.arrive") #>"></span>
+                <span class="arrive-time"><#= arriveTime #></span>
+
+                <# if (section === "queue") { #>
+                    <a href="#" class="remove-command size-20x20 btn-red icon-20x20-close" tooltip="<#= locale("queue", "queue.remove") #>"></a>
+                <# } #>
+            </th>
+        </tr>
+        <tr>
+            <td><#= locale("queue", "command.villages") #></td>
+            <td>
+                <a class="origin"></a>
+                <span class="size-20x20 icon-26x26-<#= type #>"></span>
+                <a class="target"></a>
+            </td>
+        </tr>
+        <tr>
+            <td><#= locale("queue", "general.units") #></td>
+            <td class="units">
+                <# for (var unit in units) { #>
+                    <div class="unit">
+                        <# if (unit === "catapult" && type === "attack") { #>
+                            <span class="icon-34x34-unit-<#= unit #> icon"></span><span class="amount"><#= units[unit] #> <span>(<#= locale("queue", "buildings." + catapultTarget) #>)</span></span>
+                        <# } else { #>
+                            <span class="icon-34x34-unit-<#= unit #> icon"></span><span class="amount"><#= units[unit] #></span>
+                        <# } #>
+                    </div>
+                <# } #>
+
+                <# if (hasOfficers) { #>
+                    <# for (var officer in officers) { #>
+                        <div class="officer">
+                            <span class="icon-34x34-premium_officer_<#= officer #>"></span>
+                        </div>
+                    <# } #>
+                <# } #>
+            </td>
+        </tr>
+    </tbody>
+</table>
